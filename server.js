@@ -23,15 +23,12 @@ server.listen(port, function() {
   console.log('Starting server on port 5000');
 });
 
-// Add the WebSocket handlers
-io.on('connection', function(socket) {
-});
-
 setInterval(function() {
   io.sockets.emit('message', 'hi!');
 }, 1000);
 
 var players = {};
+// Add the WebSocket handlers
 io.on('connection', function(socket) {
   socket.on('new player', function() {
     players[socket.id] = {
